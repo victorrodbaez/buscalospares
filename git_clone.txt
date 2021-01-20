@@ -1,1 +1,0 @@
-git clone https://victormrb@bitbucket.org/catfoodteam/cassandra.git
