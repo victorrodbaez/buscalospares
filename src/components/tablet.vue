@@ -15,54 +15,56 @@ export default {
   props: {
     level:Number
   },
-  async data(){
+  data(){
       
-      let table = await this.createTablet();
+      let table = this.createTablet();
       return {
           table
       }
   },
   methods:{
-      async createTablet() {
-        let max = 4;
-        let min = 1;
-        let tam = 2;
-        let result = []
-        for(let i=0;i<max;i++){
-            let res = [];
-            for(let n = 0;n < tam;){
-                let randomNumber = this.getRandomArbitrary(min, max);
-                if(this.revisarArray(result,randomNumber)){
-                    n++;
-                    res.push(randomNumber);
-                }
-               // console.log(`Es el número ${n}`);
-            }
-            result.push([res]);
-        } 
-       /*  let result =  [[1,2,3,4],[5,2,7,8]];
-        result =  [1,2,3,4,5,2,7,8];
-        console.log("tamaño",this.revisarArray(result,2)); */
-        return result;
-      },
-      getRandomArbitrary(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
+      createTablet(tam) {
+        tam = 8;
+        let result = [];
+       result.push(this.createArray(tam).concat(this.createArray(tam)));
+       result = this.shuffle(result[0]);
+       return this.boardStructure(result);
       },
       /**
-       * revisa dentro del array si existe mas de 2 números iguales 
+       * Crea el array para que sirva de tablero
+       * tam = Cantidad de cartas iguales
        */
-      revisarArray(arr, n) {
-            var indices = [];
-            var idx = arr.indexOf(n);
-            while (idx != -1) {
-                indices.push(idx);
-                idx = arr.indexOf(n, idx + 1);
+      createArray(tam){
+        let arr = [];
+        for(let i=0;i<tam;i++){arr.push(i)};
+        return arr;
+      },
+      /**
+       * Desordena array
+       */
+      shuffle(arr) {
+            for (let i = arr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [arr[i], arr[j]] = [arr[j], arr[i]];
             }
-            if(indices.length <= 2){
-                return false;
-            } else{
-                return true;
-            }  
+        return arr;
+      },
+      boardStructure(arr){
+          console.log(arr);
+        let e = 0;
+        let res = []
+        let element = []
+        for(let i = 0;i <= arr.length; i++) {
+            element.push(arr[i]);
+            e++;
+            if(e === 4){
+                res.push(element);
+                element = [];
+                e = 0;
+            }
+        }
+        console.log(res)
+        return res;
       }
   },
   mounted(){
