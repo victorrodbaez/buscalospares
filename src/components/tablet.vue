@@ -3,6 +3,9 @@
     <div class="container" v-if="table">
         <div class="row"   v-for="items of table" :key="items.id">
             <div class="col"  v-for="item of items" :key="item.id">
+                <img src="../assets/DORSO_ROJO.jpg" alt="" @click="pushCard(item)" width="50" height="100" srcset="">
+                <img src="../assets/2.jpg" alt="" width="50" height="100" srcset="">
+                <img src="http://localhost:8080/img/2.76b129dc.jpg" width="50" height="100" srcset="">
                     {{item}}
             </div>
         </div>
@@ -13,13 +16,17 @@
 export default {
   name: "Tablet",
   props: {
-    level:Number
+    level:Number,
+    actualCard:Number
   },
   data(){
-      
+      let srcES = "../assets/1.jpg"
       let table = this.createTablet();
+      let card  = this.actualCard;
       return {
-          table
+          table,
+          card,
+          srcES
       }
   },
   methods:{
@@ -50,7 +57,6 @@ export default {
         return arr;
       },
       boardStructure(arr){
-          console.log(arr);
         let e = 0;
         let res = []
         let element = []
@@ -63,8 +69,22 @@ export default {
                 e = 0;
             }
         }
-        console.log(res)
         return res;
+      },
+      pushCard(item){
+          console.log(this.card);
+          if(!this.card){
+            console.log("asignado valor")
+            this.card = item;
+            console.log(this.card);
+          } else if(this.card === item) {
+            
+            console.log("Correcto")
+          } else {
+            console.log("cogiendo nuevo valor")
+            this.card = item;
+            console.log(this.card);
+          }
       }
   },
   mounted(){
