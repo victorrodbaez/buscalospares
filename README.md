@@ -1,5 +1,20 @@
 # buscalospares
 
+¡Bienvenidos a un pequeño juego de *Busca parejas*!
+
+La mecánica del juego es simple. Debes seleccionar un nivel y luego aparecerá un grupo de cartas.
+
+Selecciona la pareja y habrás ganado.
+
+# Primeros pasos
+
+## Lanzando proyecto
+
+npm install -g serve
+
+serve -s dist
+
+
 ## Project setup
 ```
 npm install
@@ -19,6 +34,5 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Creador
+Víctor M. Rodríguez Báez
