@@ -6,9 +6,9 @@
       </div>
       <div class="col">
         <level/>
-         <!--  <Level :dataButton="dataButton" v-on:init_game="startGame" v-if="active" /> -->
+          <Level :dataButton="dataButton" v-on:init_game="startGame" v-if="active" />
          <!--  <Tablet v-if="!active" /> -->
-         <tablet level=2 />
+         <Tablet v-if="!active" :level="level" :text ="text" :puntuation="0" v-on:go_back="home" />
       </div>
     </div>
   </div>
@@ -28,7 +28,7 @@ export default {
   props: ['item']
   ,
     data() {
-        let dataButton = [this.item] 
+        let dataButton = [this.item];
         dataButton = [
             {
               id:null,
@@ -36,18 +36,24 @@ export default {
               level:null
             }
           ]
-          console.log(this.dataButton);
         return {
           dataButton,
           active:Boolean,
-          level:Number
+          level:Number,
+          text:String
         }
     },
   methods: {
-      startGame(datos) {
-        console.log(datos);
-        this.active = !this.active;
-        this.level = datos;
+      home(active){
+        this.active = active;
+      },
+      startGame(datos,active) {
+        if(!active){
+          this.text = this.dataButton.find(e=>e.level===datos).text;
+          this.level = datos;
+        }
+          this.active = active;
+        
       },
       menu() {
          this.dataButton = [
