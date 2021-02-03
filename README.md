@@ -2,11 +2,14 @@
 
 ¡Bienvenidos a un pequeño juego de *Busca parejas*!
 
+Pruebalo 
+
+https://friendly-noyce-d2b168.netlify.app/#/
+# Primeros pasos
+
 La mecánica del juego es simple. Debes seleccionar un nivel y luego aparecerá un grupo de cartas.
 
 Selecciona la pareja y habrás ganado.
-
-# Primeros pasos
 
 ## Lanzando proyecto
 
