@@ -5,7 +5,7 @@
         <img alt="Vue logo" src="../assets/logo.png" />
       </div>
       <div class="col">
-        <level/>
+        <chargeImg v-if="false"/>
           <Level :dataButton="dataButton" v-on:init_game="startGame" v-if="active" />
          <!--  <Tablet v-if="!active" /> -->
          <Tablet v-if="!active" :level="level" :text ="text" :puntuation="0" v-on:go_back="home" />
@@ -18,12 +18,13 @@
 // @ is an alias to /src
 import Level from "@/components/level.vue";
 import Tablet from '@/components/tablet.vue';
-
+import chargeImg from '@/components/chargeImg.vue';
 export default {
   name: "Home",
   components: {
     Level,
-    Tablet
+    Tablet,
+    chargeImg
   },
   props: ['item']
   ,

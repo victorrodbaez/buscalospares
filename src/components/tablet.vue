@@ -9,6 +9,7 @@
         </div>
         <div class="row">
           <div class="col-12">
+           
             <p>Puntuación: {{punt}}</p>
           </div>
           <div class="col-12">
@@ -179,7 +180,8 @@ export default {
               this.result = "<h4>¡Correcto!</h4> <b>¡Vas muy bien!</b>";
               let card = this.bringCard(item);
               event.target.parentNode.replaceChild(card,event.target);
-              this.lastPos = undefined;
+              this.lastPos = undefined
+              ;
               this.card = undefined;
               this.punt = this.punt + 1;
               if(this.punt === this.tam){
